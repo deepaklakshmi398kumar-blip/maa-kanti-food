@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-cream text-dark transition-colors duration-300;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-dark;
+  }
+
+  h1 {
+    @apply text-2xl sm:text-3xl md:text-4xl;
+  }
+
+  h2 {
+    @apply text-xl sm:text-2xl md:text-3xl;
+  }
+
+  button {
+    @apply transition-all duration-200;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply rounded-lg bg-golden-500 px-6 py-3 font-semibold text-white transition-all duration-200 hover:bg-golden-600 hover:shadow-lg active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply rounded-lg border-2 border-golden-500 px-6 py-3 font-semibold text-golden-500 transition-all duration-200 hover:bg-golden-50 active:scale-95;
+  }
+
+  .btn-small {
+    @apply rounded px-4 py-2 text-sm font-medium transition-all duration-200;
+  }
+
+  .card {
+    @apply rounded-xl bg-white p-4 shadow-md transition-all duration-300 hover:shadow-lg hover:scale-105 dark:bg-brown-700;
+  }
+
+  .container-custom {
+    @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-12 sm:py-16 md:py-20;
+  }
+}
+
+/* Dark Mode Styles */
+:root {
+  --color-dark: #2c1810;
+  --color-golden: #C9A961;
+  --color-brown: #8B6F47;
+  --color-cream: #fef9f3;
+}
+
+.dark {
+  @apply bg-dark text-cream;
+}
+
+.dark body {
+  @apply bg-gray-950 text-gray-100;
+}
+
+.dark .card {
+  @apply bg-gray-900 shadow-dark;
+}
+
+/* Smooth Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmerLoading {
+  0%, 100% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmerLoading 2s infinite;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.5) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  background-size: 1000px 100%;
+}
+
+/* Responsive Utilities */
+@media (max-width: 480px) {
+  body {
+    @apply text-sm;
+  }
+
+  h1 {
+    @apply text-xl;
+  }
+
+  h2 {
+    @apply text-lg;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    @apply bg-white text-black;
+  }
+
+  .no-print {
+    @apply hidden;
+  }
+}
