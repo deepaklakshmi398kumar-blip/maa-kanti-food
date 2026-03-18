@@ -2,11 +2,16 @@ import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
 
+// Test user credentials are loaded from environment variables.
+// Set DEMO_USER_EMAIL, DEMO_USER_NAME, and DEMO_USER_PASSWORD_HASH in .env.local.
 const TEST_USER = {
   id: '1',
-  name: 'Test User',
-  email: 'test@example.com',
-  passwordHash: bcrypt.hashSync('password123', 10),
+  name: process.env.DEMO_USER_NAME ?? 'Test User',
+  email: process.env.DEMO_USER_EMAIL ?? '',
+  // Fallback hash is for "password123" — override via DEMO_USER_PASSWORD_HASH in .env.local
+  passwordHash:
+    process.env.DEMO_USER_PASSWORD_HASH ??
+    '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy',
 };
 
 const handler = NextAuth({

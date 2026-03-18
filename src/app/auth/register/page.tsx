@@ -31,18 +31,19 @@ export default function RegisterPage() {
 
     setLoading(true);
     try {
-      // NOTE: This is a client-side demo only. In production, registration should be
-      // handled server-side with properly hashed passwords via an API route.
-      const users = JSON.parse(localStorage.getItem('users') || '[]') as Array<{email: string; name: string; password: string}>;
-      if (users.some((u) => u.email === email)) {
-        toast.error('Email already registered');
+      const res = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password }),
+      });
+
+      const data = (await res.json()) as { message?: string; error?: string };
+
+      if (!res.ok) {
+        toast.error(data.error ?? 'Registration failed');
         return;
       }
-      // WARNING: This is a client-side demo only. Passwords are stored in plain text
-      // in localStorage and are NOT secure. A production implementation must use a
-      // server-side API route with bcrypt hashing and a proper database.
-      users.push({ name, email, password });
-      localStorage.setItem('users', JSON.stringify(users));
+
       toast.success('Account created! Please sign in.');
       router.push('/auth/login');
     } catch {
