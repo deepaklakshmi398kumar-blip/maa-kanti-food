@@ -1,0 +1,77 @@
+# QUICK DEPLOYMENT - COPY & PASTE COMMANDS
+
+## GITHUB SETUP (5 minutes)
+
+```powershell
+# Step 1: Go to GitHub.com, create NEW repository (make it PUBLIC)
+# Name it: maa-kanti-food-nextjs
+
+# Step 2: Copy these commands and run them:
+
+cd "c:\Users\DEEPAK KUMAR\maa-kanti-food-nextjs"
+
+git remote add origin https://github.com/YOUR_USERNAME/maa-kanti-food-nextjs.git
+
+git branch -M main
+
+git push -u origin main
+```
+
+⚠️ **BEFORE RUNNING:** Replace `YOUR_USERNAME` with your actual GitHub username!
+
+---
+
+## VERCEL DEPLOYMENT (3 minutes)
+
+Once GitHub push is done:
+
+1. **Visit:** https://vercel.com
+2. **Click:** "New Project"  
+3. **Select:** "Import Git Repository"
+4. **Paste:** `https://github.com/YOUR_USERNAME/maa-kanti-food-nextjs`
+5. **Click:** "Import"
+6. **Auto-Configure:** (Next.js is detected automatically)
+7. **Click:** "Deploy"
+
+**WAIT 2-3 MINUTES** ⏳
+
+Your site is LIVE! 🎉
+
+---
+
+## VERIFY IT WORKS
+
+Visit your Vercel URL and test:
+- ✅ Home page loads
+- ✅ Products page works
+- ✅ Dark mode button works
+- ✅ Cart button works
+- ✅ All navigation links work
+
+---
+
+## IF SOMETHING GOES WRONG
+
+1. Go to Vercel Dashboard
+2. Click your project
+3. Go to "Deployments"
+4. Click latest deployment
+5. Check "Build Logs"
+6. Share error message in GitHub issue
+
+---
+
+## LOCAL TESTING (BEFORE PUSHING)
+
+```powershell
+cd "c:\Users\DEEPAK KUMAR\maa-kanti-food-nextjs"
+npm start
+```
+
+Visit http://localhost:3000 and verify all pages work.
+
+---
+
+**YOUR WEBSITE WILL BE LIVE IN 10 MINUTES! 🚀**
+
+JUST DO IT! 💪
