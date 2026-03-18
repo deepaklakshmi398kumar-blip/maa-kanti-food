@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext } from 'react';
 
 interface AuthContextType {
   isLoading: boolean;
@@ -9,10 +9,8 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType>({ isLoading: false });
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  // isLoading is a placeholder for future async auth operations (e.g., session hydration)
-  const [isLoading] = useState(false);
   return (
-    <AuthContext.Provider value={{ isLoading }}>
+    <AuthContext.Provider value={{ isLoading: false }}>
       {children}
     </AuthContext.Provider>
   );

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { products } from '@/data/products';
+import { products, categories } from '@/data/products';
 import { Product } from '@/types';
 import ProductCard from '@/components/ProductCard';
 import CategoryFilter from '@/components/CategoryFilter';
@@ -92,7 +92,7 @@ function ProductsContent() {
         <div className="flex-grow">
           {/* Mobile category */}
           <div className="md:hidden mb-4 flex gap-2 flex-wrap">
-            {['All', 'Spices', 'Grains', 'Oils', 'Pulses', 'Organic', 'Snacks'].map((cat) => (
+            {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
