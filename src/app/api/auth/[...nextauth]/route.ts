@@ -7,7 +7,7 @@ import bcrypt from 'bcryptjs';
 const TEST_USER = {
   id: '1',
   name: process.env.DEMO_USER_NAME ?? 'Test User',
-  email: process.env.DEMO_USER_EMAIL ?? '',
+  email: process.env.DEMO_USER_EMAIL ?? 'test@example.com',
   // Fallback hash is for "password123" — override via DEMO_USER_PASSWORD_HASH in .env.local
   passwordHash:
     process.env.DEMO_USER_PASSWORD_HASH ??

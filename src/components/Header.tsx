@@ -9,7 +9,8 @@ import { useState } from 'react';
 export default function Header() {
   const { itemCount } = useCart();
   const { data: session } = useSession();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [profileMenuOpen, setProfileMenuOpen] = useState(false);
 
   return (
     <header className="bg-primary-600 text-white shadow-lg sticky top-0 z-50">
@@ -44,17 +45,17 @@ export default function Header() {
             {session ? (
               <div className="relative">
                 <button
-                  onClick={() => setMenuOpen(!menuOpen)}
+                  onClick={() => setProfileMenuOpen(!profileMenuOpen)}
                   className="flex items-center space-x-1 hover:text-yellow-300 transition-colors"
                 >
                   <FaUser className="text-xl" />
                   <span className="hidden md:inline text-sm">{session.user?.name}</span>
                 </button>
-                {menuOpen && (
+                {profileMenuOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-lg shadow-xl py-1 z-10">
                     <p className="px-4 py-2 text-sm text-gray-500 border-b">{session.user?.email}</p>
                     <button
-                      onClick={() => { signOut(); setMenuOpen(false); }}
+                      onClick={() => { signOut(); setProfileMenuOpen(false); }}
                       className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
                     >
                       Sign Out
@@ -73,7 +74,7 @@ export default function Header() {
 
             <button
               className="md:hidden p-2"
-              onClick={() => setMenuOpen(!menuOpen)}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <div className="space-y-1">
                 <span className="block w-6 h-0.5 bg-white"></span>
@@ -84,11 +85,11 @@ export default function Header() {
           </div>
         </div>
 
-        {menuOpen && (
+        {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-primary-500">
             <nav className="flex flex-col space-y-2">
-              <Link href="/" className="hover:text-yellow-300 py-1" onClick={() => setMenuOpen(false)}>Home</Link>
-              <Link href="/products" className="hover:text-yellow-300 py-1" onClick={() => setMenuOpen(false)}>Products</Link>
+              <Link href="/" className="hover:text-yellow-300 py-1" onClick={() => setMobileMenuOpen(false)}>Home</Link>
+              <Link href="/products" className="hover:text-yellow-300 py-1" onClick={() => setMobileMenuOpen(false)}>Products</Link>
             </nav>
           </div>
         )}

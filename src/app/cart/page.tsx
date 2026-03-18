@@ -6,7 +6,7 @@ import CartItem from '@/components/CartItem';
 import { FaShoppingCart, FaArrowLeft } from 'react-icons/fa';
 
 export default function CartPage() {
-  const { items, total, clearCart } = useCart();
+  const { items, itemCount, total, clearCart } = useCart();
 
   const deliveryFee = total >= 499 ? 0 : 49;
   const finalTotal = total + deliveryFee;
@@ -63,7 +63,7 @@ export default function CartPage() {
 
             <div className="space-y-3 mb-6">
               <div className="flex justify-between text-gray-600">
-                <span>Subtotal ({items.length} items)</span>
+                <span>Subtotal ({itemCount} {itemCount === 1 ? 'item' : 'items'})</span>
                 <span>₹{total}</span>
               </div>
               <div className="flex justify-between text-gray-600">

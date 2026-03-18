@@ -27,7 +27,7 @@ export async function POST(request: Request) {
     }
 
     const passwordHash = await bcrypt.hash(password, 10);
-    const newUser = { id: String(registeredUsers.length + 2), name, email, passwordHash };
+    const newUser = { id: String(registeredUsers.length + 1), name, email, passwordHash };
     registeredUsers.push(newUser);
 
     return NextResponse.json({ message: 'Account created successfully' }, { status: 201 });
