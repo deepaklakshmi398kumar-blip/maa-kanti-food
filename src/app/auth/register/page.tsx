@@ -38,6 +38,9 @@ export default function RegisterPage() {
         toast.error('Email already registered');
         return;
       }
+      // WARNING: This is a client-side demo only. Passwords are stored in plain text
+      // in localStorage and are NOT secure. A production implementation must use a
+      // server-side API route with bcrypt hashing and a proper database.
       users.push({ name, email, password });
       localStorage.setItem('users', JSON.stringify(users));
       toast.success('Account created! Please sign in.');
